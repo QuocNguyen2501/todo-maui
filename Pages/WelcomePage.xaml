@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Todo.Pages.WelcomePage"
+             BackgroundColor="#DCE6E4"
+             Shell.NavBarIsVisible="False">
+    <Grid ColumnDefinitions="*" RowDefinitions="200,*,150">
+        <VerticalStackLayout Grid.Row="0">
+            <Image HorizontalOptions="StartAndExpand" Source="Images/shape.png" />
+        </VerticalStackLayout>
+        <VerticalStackLayout Grid.Row="1">
+            <Image Source="Images/undraw_done_checking.png" Margin="0,0,0,50"></Image>
+            <Label 
+                Margin="0,0,0,20"
+                HorizontalOptions="Center" 
+                Style="{StaticResource WelcomeLabel}"
+                Text="Gets things with TODs" />
+            <HorizontalStackLayout 
+                HorizontalOptions="Center">
+            <Label 
+                    HorizontalTextAlignment="Center"
+                    FontSize="14"
+                    WidthRequest="200"
+                    Text="Lorem ipsum dolor sit amet consectetur. Eget sit nec et euismod. Consequat urna quam felis interdum quisque. Malesuada adipiscing tristique ut eget sed." 
+                    />
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+        <VerticalStackLayout Grid.Row="2" Padding="15">
+            <Button 
+                Text="Get Started"
+                Command="{Binding GotoRegisterPageCommand}"
+                />
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

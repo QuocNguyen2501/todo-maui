@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:Todo.CustomControls"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="Todo.Pages.LoginPage"
+             BackgroundColor="#DCE6E4"
+             Shell.NavBarIsVisible="False"
+             Title="LoginPage">
+    <Grid ColumnDefinitions="*" RowDefinitions="200,*,150">
+        <VerticalStackLayout Grid.Row="0">
+            <Image HorizontalOptions="StartAndExpand" Source="Images/shape.png" />
+        </VerticalStackLayout>
+        <VerticalStackLayout Grid.Row="1">
+            <VerticalStackLayout>
+                <Label 
+                    Text="Welcome back"
+                    Style="{StaticResource WelcomeLabel}"
+                    HorizontalOptions="Center" />
+                <Image Source="Images/undraw_back_to_school_inwc.png" Margin="0,0,0,50"></Image>
+            </VerticalStackLayout>
+            <VerticalStackLayout Padding="15" Spacing="20">
+                <controls:StandardEntry 
+                    Padding="20" 
+                    CornerRadius="30" 
+                    HeightRequest="55" 
+                    BackgroundColor="White" 
+                    BorderThickness="1" 
+                    BorderColor="White"
+                    Placeholder="Enter your Email">
+                    <controls:StandardEntry.Behaviors>
+                        <toolkit:EmailValidationBehavior 
+                            MinimumLength="1"
+                            InvalidStyle="{StaticResource InvalidEntryStyle}" 
+                            ValidStyle="{StaticResource ValidEntryStyle}" 
+                            Flags="ValidateOnValueChanged"/>
+                    </controls:StandardEntry.Behaviors>
+                </controls:StandardEntry>
+                <controls:StandardEntry 
+                    Padding="20" 
+                    CornerRadius="30" 
+                    HeightRequest="55" 
+                    BackgroundColor="White" 
+                    BorderThickness="1" 
+                    BorderColor="White" 
+                    Placeholder="Enter password" 
+                    IsPassword="True">
+                    <controls:StandardEntry.Behaviors>
+                        <toolkit:MultiValidationBehavior>
+                            <toolkit:TextValidationBehavior  
+                                InvalidStyle="{StaticResource InvalidEntryStyle}"
+                                ValidStyle="{StaticResource ValidEntryStyle}"
+                                MinimumLength="1"
+                                MaximumLength="30"/>    
+                        </toolkit:MultiValidationBehavior>
+                    </controls:StandardEntry.Behaviors>
+                </controls:StandardEntry>
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+        <VerticalStackLayout Grid.Row="2" Padding="15">
+            <Button 
+                Command="{Binding GotoHomePageCommand}"
+                Text="Login" ></Button>
+            <HorizontalStackLayout HorizontalOptions="Center">
+                <Label 
+                    Margin="0,20,0,0"
+                    FontSize="15"
+                    Text="Don't have an account ? " />
+                <Button  
+                    Command="{Binding GotoRegisterPageCommand}"
+                    Style="{StaticResource FakeHyperlink}"
+                    Text="Register"/>
+            </HorizontalStackLayout>
+            
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>
