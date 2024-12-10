@@ -5,7 +5,7 @@
              xmlns:viewmodel="clr-namespace:Todo.ViewModels"
              x:Class="Todo.Pages.RegisterPage"
              xmlns:controls="clr-namespace:Todo.CustomControls"
-             BackgroundColor="#DCE6E4"
+             BackgroundColor="#F0F4F3"
              Shell.NavBarIsVisible="False">
     <Grid ColumnDefinitions="*" RowDefinitions="200,*,150">
         <VerticalStackLayout Grid.Row="0">

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:Todo.CustomControls"
              x:Class="Todo.Pages.HomePage"
-             BackgroundColor="#DCE6E4"
+             BackgroundColor="#F0F4F3"
              Shell.NavBarIsVisible="False"
              Title="HomePage">
     <Grid ColumnDefinitions="*" RowDefinitions="300,150,*">
@@ -23,24 +24,18 @@
         </VerticalStackLayout>
         <VerticalStackLayout Grid.Row="1" Padding="20">
             <Label Text="Good Afternoon" FontAttributes="Bold" HorizontalOptions="End"/>
-            <Frame WidthRequest="120" HeightRequest="120" CornerRadius="60">
-                <Frame.Shadow>
-                    <Shadow Brush="Black"
-                    Offset="20,20"
-                    Radius="40"
-                    Opacity="0.8" />
-                </Frame.Shadow>
+            <Frame WidthRequest="120" HeightRequest="120" CornerRadius="60" BackgroundColor="#F1FDFE">
                 <VerticalStackLayout WidthRequest="120" HeightRequest="120">
                     <Grid ColumnDefinitions="20,80,20" RowDefinitions="20,80,20" >
-                        <Label Grid.Row="0" Grid.Column="1" Text="12" HorizontalOptions="Center" TextColor="{StaticResource Primary}"/>
-                        <Label Grid.Row="1" Grid.Column="2" Text="3" HorizontalOptions="End" Margin="0,30,5,0" TextColor="{StaticResource Primary}"/>
-                        <Label Grid.Row="2" Grid.Column="1" Text="6"  HorizontalOptions="Center" TextColor="{StaticResource Primary}"/>
-                        <Label Grid.Row="1" Grid.Column="0" Text="9"  HorizontalOptions="Center" Margin="0,30,5,0" TextColor="{StaticResource Primary}"/>
+                        <Label Grid.Row="0" Grid.Column="1" Text="12" HorizontalOptions="Center" TextColor="#2E8F95"/>
+                        <Label Grid.Row="1" Grid.Column="2" Text="3" HorizontalOptions="End" Margin="0,30,5,0" TextColor="#2E8F95"/>
+                        <Label Grid.Row="2" Grid.Column="1" Text="6"  HorizontalOptions="Center" TextColor="#2E8F95"/>
+                        <Label Grid.Row="1" Grid.Column="0" Text="9"  HorizontalOptions="Center" Margin="0,30,5,0" TextColor="#2E8F95"/>
                         <Grid ColumnDefinitions="*" RowDefinitions="*"  Grid.Row="1" Grid.Column="1" >
-                            <Line x:Name="hourHand" StrokeThickness="2" Stroke="#50C2C9" X1="40" Y1="40" X2="40" Y2="0" />
-                            <Line x:Name="minuteHand" StrokeThickness="1.5" Stroke="#8FE1D7" X1="40" Y1="40" X2="40" Y2="0" />
-                            <Line x:Name="secondHand" StrokeThickness="1" Stroke="#DFDFDF" X1="40" Y1="40" X2="40" Y2="0" />
-                            <Ellipse StrokeThickness="1" Fill="#DCE6E4" WidthRequest="12" HeightRequest="12"/>
+                            <Line x:Name="hourHand" StrokeThickness="2" Stroke="#2E8F95" X1="40" Y1="40" X2="40" Y2="0" />
+                            <Line x:Name="minuteHand" StrokeThickness="1.5" Stroke="#7DC9CE" X1="40" Y1="40" X2="40" Y2="0" />
+                            <Line x:Name="secondHand" StrokeThickness="1" Stroke="#C8C8C8" X1="40" Y1="40" X2="40" Y2="0" />
+                            <Ellipse StrokeThickness="1" Fill="#F0F4F3" WidthRequest="12" HeightRequest="12"/>
                         </Grid>
                     </Grid>
                 </VerticalStackLayout>
@@ -48,10 +43,15 @@
         </VerticalStackLayout>
         <VerticalStackLayout Padding="20" Grid.Row="2">
             <Label Text="Task list" FontAttributes="Bold" />
-            <Frame HeightRequest="250" WidthRequest="370" CornerRadius="10" Margin="0,30,0,0"  BackgroundColor="#FFFFFF">
+            <Frame HeightRequest="250" WidthRequest="370" CornerRadius="10" Margin="0,30,0,0"  BackgroundColor="#FFFFFF" BorderColor="#FFFFFF">
                 <VerticalStackLayout>
-                    <Entry />
-                    <CollectionView></CollectionView>
+                    <HorizontalStackLayout>
+                        <controls:StandardEntry BorderThickness="0" Placeholder="Daily Task" WidthRequest="300"/>
+                        <ImageButton Source="Images/plus.png" HeightRequest="25" WidthRequest="25"  />
+                    </HorizontalStackLayout>
+                    <RefreshView>
+                        <CollectionView></CollectionView>
+                    </RefreshView>
                 </VerticalStackLayout>
             </Frame>
         </VerticalStackLayout>
