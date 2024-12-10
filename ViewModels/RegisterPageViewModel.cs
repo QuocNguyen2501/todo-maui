@@ -55,6 +55,7 @@ public partial class RegisterPageViewModel:BaseViewModel
         await _userRepository.SaveItemAsync(new User
         {
             FullName = RegisterModel.Name,
+            Email = RegisterModel.Email,
             Password = RegisterModel.Password,
             CreatedDate = DateTime.UtcNow
         });

@@ -36,14 +36,15 @@ public partial class LoginPageViewModel:BaseViewModel
     {
         if (LoginModel.HasErrors)
         {
-            var validationErrors = loginModel.GetErrors().ToArray();
+            var validationErrors = LoginModel.GetErrors().ToArray();
             for (int i = 0; i < validationErrors.Count(); i++)
             {
                 await Shell.Current.DisplayAlert("Error", validationErrors[i].ToString(), "Ok");
             }
             return;
         }
-        var user = (await _userRepository.GetItemsAsync()).FirstOrDefault(f => f.Email == loginModel.Email && f.Password == loginModel.Password);
+        var allUsers = (await _userRepository.GetItemsAsync());
+        var user = allUsers.FirstOrDefault(f => f.Email == LoginModel.Email && f.Password == LoginModel.Password);
         if (user == null)
         {
             await Shell.Current.DisplayAlert("Error", "Email/Password is incorrect", "Ok");

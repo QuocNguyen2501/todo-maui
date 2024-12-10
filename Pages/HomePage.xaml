@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:Todo.CustomControls"
@@ -43,7 +43,7 @@
         </VerticalStackLayout>
         <VerticalStackLayout Padding="20" Grid.Row="2">
             <Label Text="Task list" FontAttributes="Bold" />
-            <Frame HeightRequest="250" WidthRequest="370" CornerRadius="10" Margin="0,30,0,0"  BackgroundColor="#FFFFFF" BorderColor="#FFFFFF">
+            <Frame HeightRequest="300" WidthRequest="370" CornerRadius="10" Margin="0,20,0,0"  BackgroundColor="#FFFFFF" BorderColor="#FFFFFF">
                 <VerticalStackLayout>
                     <HorizontalStackLayout>
                         <controls:StandardEntry BorderThickness="0" Placeholder="Daily Task" WidthRequest="300"/>
