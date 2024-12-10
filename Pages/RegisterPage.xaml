@@ -1,8 +1,7 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-             xmlns:viewmodel="clr-namespace:Todo.ViewModels"
              x:Class="Todo.Pages.RegisterPage"
              xmlns:controls="clr-namespace:Todo.CustomControls"
              BackgroundColor="#F0F4F3"
@@ -33,7 +32,7 @@
                     BorderThickness="1" 
                     BorderColor="White" 
                     x:Name="Fullname"
-                    Text="{Binding RegisterModel.Name, Mode=OneWay}"
+                    Text="{Binding RegisterModel.Name, Mode=TwoWay}"
                     Placeholder="Enter your full name">
                     <controls:StandardEntry.Behaviors>
                         <toolkit:TextValidationBehavior  
@@ -51,13 +50,13 @@
                     BorderThickness="1" 
                     BorderColor="White" 
                     x:Name="Email"
-                    Text="{Binding RegisterModel.Email, Mode=OneWay}"
+                    Text="{Binding RegisterModel.Email, Mode=TwoWay}"
                     Placeholder="Enter your email">
                     <controls:StandardEntry.Behaviors>
                         <toolkit:EmailValidationBehavior 
                             MinimumLength="1"
-                            InvalidStyle="{StaticResource InvalidEntryStyle}" 
-                            ValidStyle="{StaticResource ValidEntryStyle}" 
+                            InvalidStyle="{StaticResource InvalidEntryStyle}"
+                            ValidStyle="{StaticResource ValidEntryStyle}"
                             Flags="ValidateOnValueChanged"/>
                     </controls:StandardEntry.Behaviors>
                 </controls:StandardEntry>
@@ -70,16 +69,14 @@
                     BorderColor="White" 
                     x:Name="Password"
                     Placeholder="Enter password"  
-                    Text="{Binding RegisterModel.Password, Mode=OneWay}"
+                    Text="{Binding RegisterModel.Password, Mode=TwoWay}"
                     IsPassword="True">
                     <controls:StandardEntry.Behaviors>
-                        <toolkit:MultiValidationBehavior>
                             <toolkit:TextValidationBehavior  
                                 InvalidStyle="{StaticResource InvalidEntryStyle}"
                                 ValidStyle="{StaticResource ValidEntryStyle}"
                                 MinimumLength="1"
                                 MaximumLength="30"/>        
-                        </toolkit:MultiValidationBehavior>
                     </controls:StandardEntry.Behaviors>
                 </controls:StandardEntry>
                 <controls:StandardEntry 
@@ -90,23 +87,21 @@
                     BorderThickness="1" 
                     BorderColor="White" 
                     x:Name="ConfirmPassword"
-                    Text="{Binding RegisterModel.ConfirmPassword, Mode=OneWay}"
+                    Text="{Binding RegisterModel.ConfirmPassword, Mode=TwoWay}"
                     Placeholder="Confirm password" IsPassword="True">
                     <controls:StandardEntry.Behaviors>
-                        <toolkit:MultiValidationBehavior>
-                            <toolkit:TextValidationBehavior  
-                                InvalidStyle="{StaticResource InvalidEntryStyle}"
-                                ValidStyle="{StaticResource ValidEntryStyle}"
-                                MinimumLength="1"
-                                MaximumLength="30"/>       
-                        </toolkit:MultiValidationBehavior>
-                        <toolkit:EventToCommandBehavior EventName="TextChanged" Command="{Binding ValidateConfirmPasswordCommand}"/>
+                        <toolkit:TextValidationBehavior  
+                            InvalidStyle="{StaticResource InvalidEntryStyle}"
+                            ValidStyle="{StaticResource ValidEntryStyle}"
+                            MinimumLength="1"
+                            MaximumLength="30"/>       
+                       
                     </controls:StandardEntry.Behaviors>
                 </controls:StandardEntry>
             </VerticalStackLayout>
         </VerticalStackLayout>
         <VerticalStackLayout Grid.Row="2" Padding="15">
-            <Button Text="Register" IsEnabled="False">
+            <Button Text="Register"  Command="{Binding RegisterCommand}" >
                 <Button.Triggers>
                     <MultiTrigger TargetType="Button">
                         <MultiTrigger.Conditions>

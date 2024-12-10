@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:Todo.CustomControls"
@@ -27,12 +27,13 @@
                     BackgroundColor="White" 
                     BorderThickness="1" 
                     BorderColor="White"
+                    Text="{Binding LoginModel.Email}"
                     Placeholder="Enter your Email">
                     <controls:StandardEntry.Behaviors>
                         <toolkit:EmailValidationBehavior 
                             MinimumLength="1"
-                            InvalidStyle="{StaticResource InvalidEntryStyle}" 
-                            ValidStyle="{StaticResource ValidEntryStyle}" 
+                            InvalidStyle="{StaticResource InvalidEntryStyle}"
+                            ValidStyle="{StaticResource ValidEntryStyle}"
                             Flags="ValidateOnValueChanged"/>
                     </controls:StandardEntry.Behaviors>
                 </controls:StandardEntry>
@@ -42,17 +43,16 @@
                     HeightRequest="55" 
                     BackgroundColor="White" 
                     BorderThickness="1" 
-                    BorderColor="White" 
+                    BorderColor="White"
+                    Text="{Binding LoginModel.Password}"
                     Placeholder="Enter password" 
                     IsPassword="True">
                     <controls:StandardEntry.Behaviors>
-                        <toolkit:MultiValidationBehavior>
                             <toolkit:TextValidationBehavior  
                                 InvalidStyle="{StaticResource InvalidEntryStyle}"
                                 ValidStyle="{StaticResource ValidEntryStyle}"
                                 MinimumLength="1"
                                 MaximumLength="30"/>    
-                        </toolkit:MultiValidationBehavior>
                     </controls:StandardEntry.Behaviors>
                 </controls:StandardEntry>
             </VerticalStackLayout>

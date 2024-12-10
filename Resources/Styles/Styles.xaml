@@ -7,13 +7,13 @@
     <Style x:Key="InvalidEntryStyle" TargetType="Entry">
         <Setter Property="TextColor" Value="Red" />
     </Style>
-    <Style x:Key="ValidEntryStyle" TargetType="Entry">
-        <Setter Property="TextColor" Value="Green" />
+     <Style x:Key="ValidEntryStyle" TargetType="Entry">
+        <Setter Property="TextColor" Value="PrimaryDarkText" />
     </Style>
 
     <Style x:Key="FakeHyperlink" TargetType="Button">
-        <Setter Property="BackgroundColor" Value="#DCE6E4" />
-        <Setter Property="BorderColor" Value="#DCE6E4" />
+        <Setter Property="BackgroundColor" Value="#F0F4F3" />
+        <Setter Property="BorderColor" Value="#F0F4F3" />
         <Setter Property="Padding" Value="0" />
         <Setter Property="HeightRequest" Value="19" />
         <Setter Property="Margin" Value="0,19,0,0" />
