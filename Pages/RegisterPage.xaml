@@ -15,6 +15,7 @@
                 <Label 
                     Text="Welcome to Onboard!"
                     Style="{StaticResource WelcomeLabel}"
+                    FontFamily="PoppinsSemiBold"
                     HorizontalOptions="Center" />
                 <Label 
                     HorizontalTextAlignment="Center"
@@ -120,6 +121,7 @@
                     FontSize="15"
                     Text="Already have an account ? " />
                 <Button 
+                    Margin="0,15,0,0"
                     Command="{Binding GotoLoginPageCommand}"
                     Style="{StaticResource FakeHyperlink}"
                     Text="Sign in" /> 

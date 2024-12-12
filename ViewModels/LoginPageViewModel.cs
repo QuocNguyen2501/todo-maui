@@ -51,6 +51,17 @@ public partial class LoginPageViewModel:BaseViewModel
             return;
         }
 
-        await Shell.Current.GoToAsync($"{nameof(HomePage)}", true);
+        await Shell.Current.GoToAsync($"{nameof(HomePage)}",
+            true,
+            new Dictionary<string, object>()
+            {
+                { "UserInfo", 
+                    new CurrentUserModel {
+                        UserId = user.Id,
+                        FullName =user.FullName
+                    } 
+                }
+            }
+        );
     }
 }

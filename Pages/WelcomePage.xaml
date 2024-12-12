@@ -14,13 +14,14 @@
                 Margin="0,0,0,20"
                 HorizontalOptions="Center" 
                 Style="{StaticResource WelcomeLabel}"
+                FontFamily="PoppinsSemiBold"
                 Text="Gets things with TODs" />
             <HorizontalStackLayout 
                 HorizontalOptions="Center">
             <Label 
                     HorizontalTextAlignment="Center"
                     FontSize="14"
-                    WidthRequest="200"
+                    WidthRequest="220"
                     Text="Lorem ipsum dolor sit amet consectetur. Eget sit nec et euismod. Consequat urna quam felis interdum quisque. Malesuada adipiscing tristique ut eget sed." 
                     />
             </HorizontalStackLayout>

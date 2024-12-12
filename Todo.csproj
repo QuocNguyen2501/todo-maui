@@ -89,8 +89,6 @@
 	  <None Remove="Database\Repositories\" />
 	</ItemGroup>
 	<ItemGroup>
-	  <Folder Include="Database\" />
-	  <Folder Include="Database\Entities\" />
 	  <Folder Include="Database\Repositories\" />
 	</ItemGroup>
 </Project>

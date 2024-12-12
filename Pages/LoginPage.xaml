@@ -16,6 +16,7 @@
                 <Label 
                     Text="Welcome back"
                     Style="{StaticResource WelcomeLabel}"
+                    FontFamily="PoppinsSemiBold"
                     HorizontalOptions="Center" />
                 <Image Source="Images/undraw_back_to_school_inwc.png" Margin="0,0,0,50"></Image>
             </VerticalStackLayout>
@@ -67,6 +68,7 @@
                     FontSize="15"
                     Text="Don't have an account ? " />
                 <Button  
+                    Margin="0,15,0,0"
                     Command="{Binding GotoRegisterPageCommand}"
                     Style="{StaticResource FakeHyperlink}"
                     Text="Register"/>

@@ -14,8 +14,9 @@
     <Style x:Key="FakeHyperlink" TargetType="Button">
         <Setter Property="BackgroundColor" Value="#F0F4F3" />
         <Setter Property="BorderColor" Value="#F0F4F3" />
+        <Setter Property="FontFamily" Value="PoppinsRegular"/>
         <Setter Property="Padding" Value="0" />
-        <Setter Property="HeightRequest" Value="19" />
+        <Setter Property="HeightRequest" Value="20" />
         <Setter Property="Margin" Value="0,19,0,0" />
         <Setter Property="TextColor" Value="{StaticResource Primary}" />
         <Setter Property="FontSize" Value="15" />

@@ -1,11 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:controls="clr-namespace:Todo.CustomControls"
+             xmlns:viewmodel="clr-namespace:Todo.ViewModels"
+             xmlns:model="clr-namespace:Todo.Models"
+             x:DataType="viewmodel:HomePageViewModel"
              x:Class="Todo.Pages.HomePage"
              BackgroundColor="#F0F4F3"
              Shell.NavBarIsVisible="False"
              Title="HomePage">
+    <ContentPage.Behaviors>
+        <toolkit:EventToCommandBehavior Command="{Binding AppearingCommand}" EventName="Appearing" />
+    </ContentPage.Behaviors>
     <Grid ColumnDefinitions="*" RowDefinitions="300,150,*">
         <VerticalStackLayout Grid.Row="0">
             <Frame Padding="0" CornerRadius="0" HeightRequest="300" BackgroundColor="#50C2C9">
@@ -18,12 +25,13 @@
                         FontSize="20" 
                         TextColor="White" 
                         Margin="0,15,0,0" 
-                        Text="Welcome Jeegar goyani"/>
+                        FontFamily="PoppinsSemiBold"
+                        Text="{Binding Welcome}"/>
                 </VerticalStackLayout>
             </Frame>
         </VerticalStackLayout>
         <VerticalStackLayout Grid.Row="1" Padding="20">
-            <Label Text="Good Afternoon" FontAttributes="Bold" HorizontalOptions="End"/>
+            <Label Text="{Binding Greeting}" FontFamily="PoppinsSemiBold" FontAttributes="Bold" HorizontalOptions="End" />
             <Frame WidthRequest="120" HeightRequest="120" CornerRadius="60" BackgroundColor="#F1FDFE">
                 <VerticalStackLayout WidthRequest="120" HeightRequest="120">
                     <Grid ColumnDefinitions="20,80,20" RowDefinitions="20,80,20" >
@@ -42,16 +50,33 @@
             </Frame>
         </VerticalStackLayout>
         <VerticalStackLayout Padding="20" Grid.Row="2">
-            <Label Text="Task list" FontAttributes="Bold" />
+            <Label Text="Task list" FontAttributes="Bold" FontFamily="PoppinsSemiBold"/>
             <Frame HeightRequest="300" WidthRequest="370" CornerRadius="10" Margin="0,20,0,0"  BackgroundColor="#FFFFFF" BorderColor="#FFFFFF">
                 <VerticalStackLayout>
                     <HorizontalStackLayout>
-                        <controls:StandardEntry BorderThickness="0" Placeholder="Daily Task" WidthRequest="300"/>
-                        <ImageButton Source="Images/plus.png" HeightRequest="25" WidthRequest="25"  />
+                        <controls:StandardEntry PlaceholderColor="Black" BorderThickness="0" Placeholder="Daily Task" WidthRequest="300" Text="{Binding DailyTaskModel.DailyTask, Mode=TwoWay}" />
+                        <ImageButton Source="Images/plus.png" HeightRequest="25" WidthRequest="25"  Command="{Binding AddDailyTaskCommand}"/>
                     </HorizontalStackLayout>
-                    <RefreshView>
-                        <CollectionView></CollectionView>
-                    </RefreshView>
+                    <Frame BorderColor="White" Padding="0" HeightRequest="230">
+                        <CollectionView ItemsSource="{Binding DailyTasks}">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:DataType="model:DailyTaskModel">
+                                    <Frame VerticalOptions="CenterAndExpand" HeightRequest="30" BorderColor="White">
+                                        <HorizontalStackLayout Margin="-30,0,0,0" Padding="0" HeightRequest="40">
+                                            <CheckBox IsChecked="{Binding IsCompleted,Mode=TwoWay}">
+                                                <CheckBox.GestureRecognizers>
+                                                    <TapGestureRecognizer 
+                                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:HomePageViewModel}}, Path=FinishTaskCommand}" 
+                                                        CommandParameter="{Binding Id}" />
+                                                </CheckBox.GestureRecognizers>
+                                            </CheckBox>
+                                            <Label Padding="0,10,0,0" Text="{Binding DailyTask}" TextColor="Black" FontAttributes="Bold"/>
+                                        </HorizontalStackLayout>
+                                    </Frame>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </Frame>
                 </VerticalStackLayout>
             </Frame>
         </VerticalStackLayout>

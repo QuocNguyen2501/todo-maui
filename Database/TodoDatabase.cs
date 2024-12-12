@@ -13,7 +13,7 @@ public class TodoDatabase
             return _database;
 
         _database = new SQLiteAsyncConnection(DbConstants.DatabasePath, DbConstants.Flags);
-        await _database.CreateTableAsync<TodoItem>();
+        await _database.CreateTableAsync<DailyTaskItem>();
         await _database.CreateTableAsync<User>();
         return _database;
     }
