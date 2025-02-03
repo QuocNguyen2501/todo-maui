@@ -8,7 +8,7 @@
              Shell.NavBarIsVisible="False">
     <Grid ColumnDefinitions="*" RowDefinitions="200,*,150">
         <VerticalStackLayout Grid.Row="0">
-            <Image HorizontalOptions="StartAndExpand" Source="Images/shape.png" />
+            <Image HorizontalOptions="StartAndExpand" Source="shape.png" />
         </VerticalStackLayout>
         <VerticalStackLayout Grid.Row="1">
             <VerticalStackLayout>
@@ -115,13 +115,13 @@
                     </MultiTrigger>
                 </Button.Triggers>
             </Button>
-            <HorizontalStackLayout HorizontalOptions="Center">
+            <HorizontalStackLayout HorizontalOptions="Center" Margin="0,20,0,0">
                 <Label 
-                    Margin="0,20,0,0"
+                    
                     FontSize="15"
                     Text="Already have an account ? " />
                 <Button 
-                    Margin="0,15,0,0"
+                    Margin="0,-11,0,0"
                     Command="{Binding GotoLoginPageCommand}"
                     Style="{StaticResource FakeHyperlink}"
                     Text="Sign in" /> 

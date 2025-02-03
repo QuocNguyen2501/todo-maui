@@ -6,10 +6,10 @@
              Shell.NavBarIsVisible="False">
     <Grid ColumnDefinitions="*" RowDefinitions="200,*,150">
         <VerticalStackLayout Grid.Row="0">
-            <Image HorizontalOptions="StartAndExpand" Source="Images/shape.png" />
+            <Image HorizontalOptions="StartAndExpand" Source="shape.png" />
         </VerticalStackLayout>
         <VerticalStackLayout Grid.Row="1">
-            <Image Source="Images/undraw_done_checking.png" Margin="0,0,0,50"></Image>
+            <Image Source="undraw_done_checking.png" Margin="0,0,0,50"></Image>
             <Label 
                 Margin="0,0,0,20"
                 HorizontalOptions="Center" 

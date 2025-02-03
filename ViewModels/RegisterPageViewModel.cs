@@ -28,7 +28,7 @@ public partial class RegisterPageViewModel:BaseViewModel
     [RelayCommand]
     async Task GotoLoginPageAsync()
     {
-        await Shell.Current.GoToAsync($"{nameof(LoginPage)}", true);
+        await Shell.Current.GoToAsync($"{nameof(LoginPage)}");
     }
 
     [RelayCommand]

@@ -9,7 +9,7 @@
              Title="LoginPage">
     <Grid ColumnDefinitions="*" RowDefinitions="200,*,150">
         <VerticalStackLayout Grid.Row="0">
-            <Image HorizontalOptions="StartAndExpand" Source="Images/shape.png" />
+            <Image HorizontalOptions="StartAndExpand" Source="shape.png" />
         </VerticalStackLayout>
         <VerticalStackLayout Grid.Row="1">
             <VerticalStackLayout>
@@ -18,7 +18,7 @@
                     Style="{StaticResource WelcomeLabel}"
                     FontFamily="PoppinsSemiBold"
                     HorizontalOptions="Center" />
-                <Image Source="Images/undraw_back_to_school_inwc.png" Margin="0,0,0,50"></Image>
+                <Image Source="undraw_back_to_school_inwc.png" Margin="0,0,0,50"></Image>
             </VerticalStackLayout>
             <VerticalStackLayout Padding="15" Spacing="20">
                 <controls:StandardEntry 
@@ -62,13 +62,12 @@
             <Button 
                 Command="{Binding GotoHomePageCommand}"
                 Text="Login" ></Button>
-            <HorizontalStackLayout HorizontalOptions="Center">
+            <HorizontalStackLayout HorizontalOptions="Center" Margin="0,20,0,0">
                 <Label 
-                    Margin="0,20,0,0"
                     FontSize="15"
                     Text="Don't have an account ? " />
                 <Button  
-                    Margin="0,15,0,0"
+                    Margin="0,-11,0,0"
                     Command="{Binding GotoRegisterPageCommand}"
                     Style="{StaticResource FakeHyperlink}"
                     Text="Register"/>

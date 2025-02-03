@@ -17,8 +17,8 @@
         <VerticalStackLayout Grid.Row="0">
             <Frame Padding="0" CornerRadius="0" HeightRequest="300" BackgroundColor="#50C2C9">
                 <VerticalStackLayout>
-                    <Image HorizontalOptions="Start" Source="Images/shape1.png" />
-                    <Image Margin="0,-40,0,0" HorizontalOptions="Center" Source="Images/avarta.png" />
+                    <Image HorizontalOptions="Start" Source="shape1.png" />
+                    <Image Margin="0,-40,0,0" HorizontalOptions="Center" Source="avarta.png" />
                     <Label 
                         HorizontalOptions="Center" 
                         FontAttributes="Bold" 
@@ -55,7 +55,7 @@
                 <VerticalStackLayout>
                     <HorizontalStackLayout>
                         <controls:StandardEntry PlaceholderColor="Black" BorderThickness="0" Placeholder="Daily Task" WidthRequest="300" Text="{Binding DailyTaskModel.DailyTask, Mode=TwoWay}" />
-                        <ImageButton Source="Images/plus.png" HeightRequest="25" WidthRequest="25"  Command="{Binding AddDailyTaskCommand}"/>
+                        <ImageButton Source="plus.png" HeightRequest="25" WidthRequest="25"  Command="{Binding AddDailyTaskCommand}"/>
                     </HorizontalStackLayout>
                     <Frame BorderColor="White" Padding="0" HeightRequest="230">
                         <CollectionView ItemsSource="{Binding DailyTasks}">
