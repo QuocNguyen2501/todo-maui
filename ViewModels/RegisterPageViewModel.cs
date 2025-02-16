@@ -1,5 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.Input;
-using Todo.Database.Entities;
+using Firebase.Auth;
 using Todo.Database.Repositories;
 using Todo.Models;
 using Todo.Pages;
@@ -9,18 +9,18 @@ namespace Todo.ViewModels;
 public partial class RegisterPageViewModel:BaseViewModel
 {
     private RegisterModel registerModel;
-
     public RegisterModel RegisterModel
     {
         get => registerModel;
         set => SetProperty(ref registerModel, value);
     }
 
-    private IRepository<User> _userRepository;
-
-    public RegisterPageViewModel(IRepository<User> userRepository)
+    private readonly FirebaseAuthClient _authClient;
+    public RegisterPageViewModel(
+        IRepository<Database.Entities.User> userRepository,
+        FirebaseAuthClient authClient)
     {
-        _userRepository = userRepository;
+        _authClient = authClient;
         RegisterModel = new RegisterModel();
     }
 
@@ -52,13 +52,7 @@ public partial class RegisterPageViewModel:BaseViewModel
             }
             return;
         }
-        await _userRepository.SaveItemAsync(new User
-        {
-            FullName = RegisterModel.Name,
-            Email = RegisterModel.Email,
-            Password = RegisterModel.Password,
-            CreatedDate = DateTime.UtcNow
-        });
+        await _authClient.CreateUserWithEmailAndPasswordAsync(registerModel.Email,registerModel.Password,RegisterModel.Name);
         await Shell.Current.GoToAsync($"{nameof(LoginPage)}", true);
     }
 

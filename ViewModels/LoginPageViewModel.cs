@@ -1,5 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.Input;
-using Todo.Database.Entities;
+using Firebase.Auth;
 using Todo.Database.Repositories;
 using Todo.Models;
 using Todo.Pages;
@@ -9,8 +9,7 @@ namespace Todo.ViewModels;
 public partial class LoginPageViewModel:BaseViewModel
 {
     private LoginModel loginModel;
-
-    private IRepository<User> _userRepository;
+    private readonly FirebaseAuthClient _authClient;
 
     public LoginModel LoginModel
     {
@@ -18,10 +17,12 @@ public partial class LoginPageViewModel:BaseViewModel
         set => SetProperty(ref loginModel, value);
     }
 
-    public LoginPageViewModel(IRepository<User> userRepository)
+    public LoginPageViewModel(
+        FirebaseAuthClient authClient
+        )
     {
         LoginModel = new LoginModel();
-        _userRepository = userRepository;
+        _authClient = authClient;
     }
 
 
@@ -43,10 +44,10 @@ public partial class LoginPageViewModel:BaseViewModel
             }
             return;
         }
-        var allUsers = (await _userRepository.GetItemsAsync());
-        var user = allUsers.FirstOrDefault(f => f.Email == LoginModel.Email && f.Password == LoginModel.Password);
-        if (user == null)
-        {
+       
+        await _authClient.SignInWithEmailAndPasswordAsync(LoginModel.Email,LoginModel.Password);
+        var user = _authClient.User;
+        if(user == null){
             await Shell.Current.DisplayAlert("Error", "Email/Password is incorrect", "Ok");
             return;
         }
@@ -57,8 +58,8 @@ public partial class LoginPageViewModel:BaseViewModel
             {
                 { "UserInfo", 
                     new CurrentUserModel {
-                        UserId = user.Id,
-                        FullName =user.FullName
+                        UserId = user.Uid,
+                        FullName =user.Info.DisplayName
                     } 
                 }
             }

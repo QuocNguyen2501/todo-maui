@@ -2,7 +2,7 @@
 {
     public class CurrentUserModel
     {
-        public int UserId { get; set; }
-        public string FullName { get; set; }
+        public string UserId { get; set; }= default!;
+        public string FullName { get; set; }= default!;
     }
 }

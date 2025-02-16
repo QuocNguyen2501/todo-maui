@@ -1,12 +1,16 @@
 ﻿using CommunityToolkit.Maui;
+using Firebase.Auth;
 using Microsoft.Extensions.Logging;
 using Todo.CustomControls;
 using Todo.Database;
-using Todo.Database.Entities;
 using Todo.Database.Repositories;
 using Todo.Pages;
 using Todo.Platforms;
-using Todo.ViewModels;
+using Todo.ViewModels;   
+using Firebase.Auth.Providers;
+using System.Reflection;
+using Microsoft.Extensions.Configuration;
+
 
 namespace Todo
 {
@@ -23,6 +27,11 @@ namespace Todo
                     fonts.AddFont("Poppins-Regular.ttf", "PoppinsRegular");
                     fonts.AddFont("Poppins-SemiBold.ttf", "PoppinsSemiBold");
                 });
+            
+            var assembly = Assembly.GetExecutingAssembly();
+            using var stream = assembly.GetManifestResourceStream("Todo.appsettings.json")!;
+            var config = new ConfigurationBuilder().AddJsonStream(stream).Build();
+            builder.Configuration.AddConfiguration(config);
 
 #if DEBUG
     		builder.Logging.AddDebug();
@@ -32,6 +41,16 @@ namespace Todo
                 if (view is StandardEntry)
                     EntryMapper.Map(handler, view);
             });
+            
+
+            builder.Services.AddSingleton(new FirebaseAuthClient(new FirebaseAuthConfig(){
+                ApiKey = builder.Configuration.GetValue<string>("FIREBASE_WEB_API_KEY"),
+                AuthDomain =  builder.Configuration.GetValue<string>("FIREBASE_AUTH_DOMAIN"),
+                Providers = new FirebaseAuthProvider[]
+                {
+                    new EmailProvider()
+                }
+            }));
 
             builder.Services.AddScoped<TodoDatabase>();
             builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));

@@ -32,9 +32,9 @@
                     BackgroundColor="White"
                     BorderThickness="1" 
                     BorderColor="White" 
-                    x:Name="Fullname"
+                    x:Name="Name"
                     Text="{Binding RegisterModel.Name, Mode=TwoWay}"
-                    Placeholder="Enter your full name">
+                    Placeholder="Enter your name">
                     <controls:StandardEntry.Behaviors>
                         <toolkit:TextValidationBehavior  
                             InvalidStyle="{StaticResource InvalidEntryStyle}"
@@ -106,7 +106,7 @@
                 <Button.Triggers>
                     <MultiTrigger TargetType="Button">
                         <MultiTrigger.Conditions>
-                            <BindingCondition Binding="{Binding Source={x:Reference Fullname}, Path=Text.Length}" Value="0"/>
+                            <BindingCondition Binding="{Binding Source={x:Reference Name}, Path=Text.Length}" Value="0"/>
                             <BindingCondition Binding="{Binding Source={x:Reference Email}, Path=Text.Length}" Value="0" />
                             <BindingCondition Binding="{Binding Source={x:Reference Password}, Path=Text.Length}" Value="0" />
                             <BindingCondition Binding="{Binding Source={x:Reference ConfirmPassword}, Path=Text.Length}" Value="0" />

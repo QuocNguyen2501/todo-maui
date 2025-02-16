@@ -4,7 +4,7 @@ namespace Todo.Models;
 
 public class RegisterModel: ObservableValidator
 {
-    private string name;
+    private string username;
     private string email;
     private string password;
     private string confirmPassword;
@@ -14,8 +14,8 @@ public class RegisterModel: ObservableValidator
     [MaxLength(50)]
     public string Name 
     { 
-        get => name;
-        set => SetProperty(ref name, value, true); 
+        get => username;
+        set => SetProperty(ref username, value, true); 
     }
 
     [Required]
